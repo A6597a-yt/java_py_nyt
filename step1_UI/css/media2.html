@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: grey;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: solid rgb(100, 100, 219);
+            padding: 10px;
+        }
+        .box{
+            border: solid;
+            background-color: rgb(80, 128, 35);
+            flex: 1;
+            padding: 40px;
+        }
+        @media(min-width : 768px){
+            .container{
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="m"></h1>
+    <div class="container">
+        <div class="box">box1</div>
+        <div class="box">box2</div>
+
+    </div>
+
+<!-- gpt -->
+    <script>
+        const title = document.getElementById("m");
+
+        function updateText() {
+        if (window.innerWidth >= 768) {
+            title.textContent = "태블릿입니다";
+        } else {
+            title.textContent = "모바일 입니다";
+        }
+        }
+
+        // 초기 실행
+        updateText();
+
+        // 창 크기 변경 시 업데이트
+        window.addEventListener("resize", updateText);
+    </script>
+</body>
+</html>
+
+
+<!-- ### 요구사항
+
+- **모바일 화면 (기본 상태)**
+    - `.container`의 방향을 세로(`column`)로 설정한다
+    - 박스 두 개가 위아래로 쌓여 표시되어야 한다
+    - 각 박스의 여백(`gap`)은 10px, 내부 여백(`padding`)은 40px 이상 유지한다
+- **태블릿 화면 이상 (768px 이상)**
+    - `.container`의 방향을 가로(`row`)로 변경한다
+    - 두 개의 박스가 **나란히** 보이게 만들어야 한다
+    - 각 박스의 폭이 자동으로 균등하게 분배되도록 한다 (`flex: 1` 활용) -->

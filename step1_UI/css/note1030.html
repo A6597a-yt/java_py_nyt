@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 스타일 밖에서 link 라고 입력하면 외부 css 사용가능 -->
+    <!-- <link rel="stylesheet" href="reset.css"> -->
+     <!-- html 에 대한 전반적인 지식 -->
+    <style>
+        body{background-color: grey;}
+        img{
+            width: 30%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        p{border: solid;}
+        .border{border: solid pink 1px;border-radius: 8px;}
+        .font{font : italic bold 28px/3 "궁서";}
+        .align{text-align: center;}
+        .deco{text-decoration:overline dotted;}
+        .indent{text-indent: 50px;}
+        .clamp{font-size: clamp(1rem, 6vw, 4rem);}
+    </style>
+</head>
+
+<body>
+    기본값 
+    <strong>strong두꺼운 글자</strong>
+    <em>em글자기울이기</em>
+    <del>del취소선</del><div><br></div>
+    <small>small작은 글자</small>
+    <sub>sub 아래</sub>기본값<sup>sup 위에</sup>
+    <a href="#">하이퍼링크는 a</a><div><br></div>
+    <img src="../images/blog1.jpg" alt="이미지 안나올때"> 이미지는 img<br>
+    <ul><li>ul _ li _ 1</li><li>ul _ li _ 2</li></ul>
+    <ol><li>ol _ li _ 1</li><li>ol _ li _ 2</li></ol>
+
+    <p class="border">border-width , style , color , radius</p>
+    <p class="font">font - family , size , weight, style</p>
+    <p class="align">텍스트 정렬 : text align</p>
+    <p class="deco">텍스트 장식 : text-decoration 에서 라인</p>
+    <p class="indent">들여쓰기 : indent</p>
+    
+    <p class="clamp">폰트사이즈 vw 를 클램프로</p>
+    
+    
+</body>
+</html>

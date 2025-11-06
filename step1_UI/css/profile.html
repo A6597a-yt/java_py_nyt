@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section{margin: 10px;padding: 10px;border-radius: 8px;}
+        .normal{border: solid;}
+        .profile--vip{
+            border: solid;
+            background-color: gold;
+        }
+        .profile__name{font-weight: bold;}
+        /* ====================================== */
+        button{border-radius: 8px;border: none;font-size: 15px;padding: 10px;}
+        .btn__text{color: white;}
+        .btn{text-align: center;}
+        .btn--success{background-color: rgb(90, 201, 90);}
+        .btn--disabled{background-color: grey;}
+    </style>
+</head>
+<body>
+    <h1>BEM 프로필 예제</h1>
+    <div class="profile">
+        <section class="normal">
+            <div class="profile__name">이름 : 홍길동</div>
+            <div class="profile__email">이메일 : aaa@aa.com</div>
+        </section>
+        <section class="profile--vip">
+            <div class="profile__name">이름 : 김철수</div>
+            <div class="profile__email">이메일 : bbb@bb.com</div>
+        </section>
+    </div>
+    <!-- ========================================= -->
+     <h1>BEM 버튼 컴포넌트 예제</h1>
+     <div class="btn">
+        <button class="btn--success">
+            <span class="btn__icon btn__text">확인</button>
+        </button>
+        <button class="btn--disabled" disabled>
+            <span class="btn__icon btn__text">비활성</button>
+        </button>
+     </div>
+     
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- css 에 대한 내용 -->
+    <style>
+        body{background-color: grey;}
+        /* *{border: solid 1px;} */
+        /*   #id 선택 , .class선택 , *전체선택   */
+        .before{
+            .ma{margin: 30px;overflow-y:auto;height: 80px;border: solid;}
+            .box {
+                background: #74b9ff;
+                color: white;
+                padding: 10px;
+                margin: 5px;
+                border-radius: 6px;
+            }
+            .block { display: block; }
+            .inline { display: inline; }
+            .inline-block { display: inline-block; width: 100px; height: 50px;}
+            .transformbox{border: solid;width: 300px;height: 300px;display: flex;
+            justify-content: center;align-items: center;}
+            .transform{border: solid pink;}
+            .container {/* 컨테이너의 예시  */
+                max-width: 1200px;   /* 컨테이너가 너무 넓어지지 않도록 최대 너비 제한 */
+                width: 100%;         /* 화면이 작을 때는 100%로 꽉 차게 */
+                margin: 0 auto;      /* 수평 가운데 정렬 (좌우 margin을 자동으로 배분) */
+                padding: 16px;       /* 모바일에서 화면 끝에 딱 붙지 않도록 안쪽 여백 */
+            }
+        }
+/* flex-direction  ================== */
+        .flex-dir{
+            section {
+                display: flex;
+                border: 1px dashed black;
+                margin-bottom: 20px;
+            }
+            .box {
+                width: 60px;
+                height: 60px;
+                text-align: center;
+                font-size: 2rem;
+                color: white;
+                border: 2px solid black;
+                margin: 10px;
+            }
+            .green  {background: yellowgreen;}
+            .violet {background: violet;}
+            .blue   {background: cornflowerblue;}
+            /* flex 방향 클래스 */
+            .row            {flex-direction: row;}
+            .rowReverse     {flex-direction: row-reverse;}
+            .column         {flex-direction: column;}
+            .columnReverse  {flex-direction: column-reverse;}
+        }
+/* flex - wrap ========================================= */
+        .flex-wrap{
+            section {
+                display: flex;
+                border: 1px dashed black;
+                margin-bottom: 20px;
+            }
+            .box {
+                width: 100px;
+                height: 100px;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+                border: 2px solid black;
+                margin: 10px;
+            }
+            .green  { background: yellowgreen; }
+            .violet { background: violet; }
+            .blue   { background: cornflowerblue; }
+            .red    { background: tomato; }
+            .brown  { background: tan; }
+            .orange { background: orange; }
+            /* flex-wrap 속성 클래스 */
+            .nowrap      {flex-wrap: nowrap;}
+            .wrap        {flex-wrap: wrap;}
+            .wrapReverse {flex-wrap: wrap-reverse;}
+        }
+/* 정렬 코드 ============================================= */
+        .justify-content{
+            h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            }
+
+            section {
+            display: flex;
+            border: 2px dashed #333;
+            margin-bottom: 25px;
+            height: 100px;
+            background: #ecf0f1;
+            }
+
+            .box {
+            width: 50px;
+            height: 50px;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            font-weight: bold;
+            border-radius: 5px;
+            }
+
+            .a { background: red; }
+            .b { background: gold; color: black; }
+            .c { background: royalblue; }
+            .d { background: green; }
+            .e { background: violet; color: black; }
+
+            /* justify-content 예시 */
+            .flex-start     { justify-content: flex-start; }
+            .center         { justify-content: center; }
+            .flex-end       { justify-content: flex-end; }
+            .space-between  { justify-content: space-between; }
+            .space-around   { justify-content: space-around; }
+
+            /* 세로 가운데 정렬도 보기 좋게 추가 */
+            section {align-items: center;}
+
+            /* 제목과 구분 */
+            h2 {
+            margin-bottom: 10px;
+            border-left: 6px solid #3498db;
+            padding-left: 10px;
+            }
+        }
+/* 정렬2 코드 ============================================= */
+        .align-content{
+            h1 {text-align: center;margin-bottom: 30px;}
+
+        h2 {
+            margin: 24px 0 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-left: 6px solid #3498db;
+            padding-left: 10px;
+        }
+
+        /* flex 컨테이너의 공통 스타일 */
+        .flex-demo {
+            display: flex;
+            flex-wrap: wrap;              /* 여러 줄로 내려가도록 */
+            border: 2px dashed #000;
+            background: #ecf0f1;
+            width: 100%;
+            max-width: 600px;             /* 너무 넓어지지 않게 */
+            height: 300px;                /* 세로 공간을 줘서 정렬 차이를 눈으로 확인 */
+            margin-bottom: 20px;
+        }
+
+        /* 아이템 공통 스타일 */
+        .item {
+            width: 100px;
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+            border: 2px solid black;
+            margin: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            line-height: 60px; /* 세로 가운데 오도록 높이 부여 */
+            height: 60px;
+        }
+
+        /* 색상 전용 클래스 */
+        .a { background: red; }
+        .b { background: yellow; color: black; }
+        .c { background: blue; }
+        .d { background: green; }
+        .e { background: violet; color: black; }
+
+        /* align-content 옵션별 데모 클래스 */
+        .ac-stretch       { align-content: stretch; }
+        .ac-flex-start    { align-content: flex-start; }
+        .ac-center        { align-content: center; }
+        .ac-flex-end      { align-content: flex-end; }
+        .ac-space-between { align-content: space-between; }
+        .ac-space-around  { align-content: space-around; }
+
+        /* 가독성용 안내 텍스트 */
+        .desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: -4px;
+            margin-bottom: 8px;
+        }
+        }
+/* 정렬3 코드 ============================================= */
+        .align-items{
+            h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .guide {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            margin: 24px 0 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-left: 6px solid #3498db;
+            padding-left: 10px;
+        }
+
+        /* 공통 flex 컨테이너 스타일 */
+        .flex-demo {
+            display: flex;
+            border: 2px dashed #000;
+            background: #ecf0f1;
+            min-height: 140px;     /* 세로 여유를 줘서 정렬 차이가 보이게 함 */
+            margin-bottom: 24px;
+            padding: 10px;
+        }
+
+        /* 아이템 공통 스타일 */
+        .item {
+            width: 100px;
+            margin: 10px;
+            color: white;
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 6px;
+            font-weight: bold;
+            padding: 10px 0; /* height를 고정하지 않고 padding으로만 크기를 확보 */
+        }
+
+        /* 색상 + 개별 폰트 크기 */
+        .a { background: red; }
+        .b { background: yellow; color: black; font-size: 36px; }
+        .c { background: blue; font-size: 190px; text-decoration: underline;}
+        .d { background: green; font-size: 50px; }
+        .e { background: violet; font-size: 10px; color: black; }
+
+        /* align-items 실험용 클래스 */
+        .ai-stretch   { align-items: stretch; }
+        .ai-flex-start{ align-items: flex-start; }
+        .ai-center    { align-items: center; }
+        .ai-flex-end  { align-items: flex-end; }
+        .ai-baseline  { align-items: baseline; }
+        }
+/* flex-grow ============================================== */
+        .flex-grow{
+            h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 20px 0 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-left: 6px solid #3498db;
+      padding-left: 10px;
+    }
+
+    .container {
+      display: flex;
+      border: 2px dashed #333;
+      background: #ecf0f1;
+      margin-bottom: 30px;
+      height: 100px;
+    }
+
+    .item {
+      background: #3498db;
+      color: white;
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 100px;
+      margin: 4px;
+      border-radius: 4px;
+      flex-grow: 0; /* 기본값 */
+    }
+
+    /* 색상 구분 */
+    .red { background: #e74c3c; }
+    .green { background: #27ae60; }
+    .purple { background: #9b59b6; }
+    .orange { background: #f39c12; }
+
+    /* 개별 grow 적용 */
+    .container1 .item:nth-child(4) { flex-grow: 1; }   /* 마지막만 늘어남 */
+    .container2 .item:nth-child(1) { flex-grow: 1; }
+    .container2 .item:nth-child(2) { flex-grow: 3; }   /* 두 번째가 3배 크기 */
+    .container2 .item:nth-child(3) { flex-grow: 1; }
+
+    .container3 .item:nth-child(1) { flex-grow: 1; }
+    .container3 .item:nth-child(2) { flex-grow: 2; }
+    .container3 .item:nth-child(3) { flex-grow: 1; }
+    .container3 .item:nth-child(4) { flex-grow: 2; }
+        }
+/* flex-shrink ============================================== */
+        .flex-shrink{
+            .container {
+      display: flex;
+      border: 2px dashed #333;
+      background: #ecf0f1;
+      margin-bottom: 30px;
+      width: 700px;
+    }
+
+    .item {
+      width: 300px;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.5rem;
+      border: 2px solid black;
+      margin: 5px;
+    }
+
+    .a { background: #e74c3c; flex-shrink: 0; } /* 줄어들지 않음 */
+    .b { background: #27ae60; } /* 기본값 */
+    .c { background: #3498db; flex-shrink: 3; } /* 더 많이 줄어듦 */
+        }
+/* align-self ===============*/
+        .align-self{
+            .container {
+            display: flex;
+            flex-direction: row;       /* 가로로 나열 */
+            align-items: center;       /* 기본은 전부 세로 가운데 */
+            border: 2px dashed #333;
+            background: #ecf0f1;
+            height: 200px;             /* 세로 공간을 크게 줘서 차이 보이게 */
+            padding: 10px;
+            gap: 10px;}
+
+            .item {
+            width: 100px;
+            padding: 10px 0;
+            border: 2px solid black;
+            border-radius: 6px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            }
+
+            .one {background: #e74c3c;
+            /* 부모 align-items(center)를 그대로 따름 (align-self 안 줌) */ }
+            .two {background: #27ae60;
+            align-self: flex-start; /* 위로 붙음 */}
+            .three {background: #3498db;
+            align-self: flex-end;   /* 아래로 붙음 */}
+            .four {background: #9b59b6;align-self: stretch;    /* 남는 세로 공간을 가득 채움 */
+            /* stretch가 눈에 보이려면 높이를 직접 지정하지 않아야 한다 */}
+        }
+/* <!-- pseudo  class 의사 클래스(요소가 상태가 바뀌는 순간을 선택하는 의사 클래스)--> */
+        .pseudo{
+            a:link      {color: #3498db;text-decoration: none;}
+            a:visited   {color: #9b59b6;}
+            a:hover     {color: #e67e22;text-decoration: underline;}
+            a:active    {color: #e74c3c;}
+            input:focus {border: 2px solid #2ecc71;outline: 2px solid red;}
+
+            input:enabled {background-color: #773f70;}
+                /*입력이 불가능한 input태그를 선택하여 배경색을 바꿈*/
+            input:disabled {background-color: #32688b;}
+                /*체크가 된 input태그와 형제인 label태그를 선택하여 글씨색과 두께를 바꿈*/
+            input:checked + label {color: black; font-weight: bold;}
+        }
+    </style>
+
+</head>
+<body>
+    <div class="before">
+        <p class="ma">내용이 많을때 오버플로우를 y로 하면 스크롤이 생긴다
+            내용이 많을때 오버플로우를 y로 하면 스크롤이 생긴다
+            내용이 많을때 오버플로우를 y로 하면 스크롤이 생긴다
+        </p>
+        <h3>display: block;</h3>
+        <div class="box block">블록으로 하니 한줄 전부 차지</div>
+        <div class="box block">박스2</div>
+
+        <h3>display: inline;</h3>
+        <span class="box inline">inline으로하니 길이만큼 차지</span>
+        <span class="box inline">박스2</span>
+
+        <h3>display: inline-block;</h3>
+        <div class="box inline-block">블록인데 사용가능</div>
+        <div class="box inline-block">flex로 대체가능하다</div>
+
+        <h3>중앙정렬 치트키;</h3>
+        <p>display: flex; → 부모를 flex 컨테이너로 만든다</p>
+        <p>justify-content: center; → 가로 중앙 정렬</p>
+        <p>align-items: center; → 세로 중앙 정렬</p>
+
+        <h3>position;</h3>
+        <p>fixed : 위치 고정</p>
+        <p>sticky : 스크롤해도 따라옴</p>
+
+        <div class="transformbox">
+            <div class="transform">중앙 배치</div>
+        </div>
+    </div>
+    
+<!-- flex-dir 코드 ================================ -->
+    <section class="flex-dir">
+        <h3>row</h3>
+        <section class="row">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+        </section>
+
+        <h3>row-reverse</h3>
+        <section class="rowReverse">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+        </section>
+
+        <h3>column</h3>
+        <section class="column">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+        </section>
+
+        <h3>column-reverse</h3>
+        <section class="columnReverse">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+        </section>
+    </section>
+<!-- flex-wrap 코드 =============================== -->
+    <div class="flex-wrap">
+        <h1>nowrap</h1>
+        <section class="nowrap">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+            <div class="box red">04</div>
+            <div class="box brown">05</div>
+            <div class="box orange">06</div>
+        </section>
+
+        <h1>wrap</h1>
+        <section class="wrap">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+            <div class="box red">04</div>
+            <div class="box brown">05</div>
+            <div class="box orange">06</div>
+        </section>
+
+        <h1>wrap-reverse</h1>
+        <section class="wrapReverse">
+            <div class="box green">01</div>
+            <div class="box violet">02</div>
+            <div class="box blue">03</div>
+            <div class="box red">04</div>
+            <div class="box brown">05</div>
+            <div class="box orange">06</div>
+        </section>
+    </div>
+<!-- 정렬 코드 ========================== -->
+    <div class="justify-content">
+        <h1>justify-content</h1>
+
+        <h2>flex-start</h2>
+        <section class="flex-start">
+            <div class="box a">A</div>
+            <div class="box b">B</div>
+            <div class="box c">C</div>
+            <div class="box d">D</div>
+            <div class="box e">E</div>
+        </section>
+        <-----------가로의 배치만 신경쓸때(세로는 고려하지 않는다.)-------->
+
+        <h2>center</h2>
+        <section class="center">
+            <div class="box a">A</div>
+            <div class="box b">B</div>
+            <div class="box c">C</div>
+            <div class="box d">D</div>
+            <div class="box e">E</div>
+        </section>
+
+        <h2>flex-end</h2>
+        <section class="flex-end">
+            <div class="box a">A</div>
+            <div class="box b">B</div>
+            <div class="box c">C</div>
+            <div class="box d">D</div>
+            <div class="box e">E</div>
+        </section>
+
+        <h2>space-between</h2>
+        <section class="space-between">
+            <div class="box a">A</div>
+            <div class="box b">B</div>
+            <div class="box c">C</div>
+            <div class="box d">D</div>
+            <div class="box e">E</div>
+        </section>
+
+        <h2>space-around</h2>
+        <section class="space-around">
+            <div class="box a">A</div>
+            <div class="box b">B</div>
+            <div class="box c">C</div>
+            <div class="box d">D</div>
+            <div class="box e">E</div>
+        </section>
+    </div>
+<!-- 정렬 2 코드 ============================ -->
+    <div class="align-content">
+        <h1>align-content</h1>
+    <p class="desc">
+        여러 줄이 된 flex 아이템들의 “줄 덩어리”를 부모 박스 안에서 세로 방향으로 어떻게 배치할지 정하는 속성이다<br/>
+        (= flex-wrap으로 줄바꿈이 일어날 때만 차이가 보임)<br>
+        한줄일때는 align-items / 두줄 이상일때는 align-content
+    </p>
+
+    <h2>stretch (기본값처럼 공간을 쭉 늘려 차지)</h2>
+    <section class="flex-demo ac-stretch">
+        <div class="item a">A</div>
+        <div class="item b">B</div>
+        <div class="item c">C</div>
+        <div class="item d">D</div>
+        <div class="item e">E</div>
+    </section>
+
+    <h2>flex-start (윗쪽으로 몰림)</h2>
+    <section class="flex-demo ac-flex-start">
+        <div class="item a">A</div>
+        <div class="item b">B</div>
+        <div class="item c">C</div>
+        <div class="item d">D</div>
+        <div class="item e">E</div>
+    </section>
+
+    <h2>center (가운데로 몰림)</h2>
+    <section class="flex-demo ac-center">
+        <div class="item a">A</div>
+        <div class="item b">B</div>
+        <div class="item c">C</div>
+        <div class="item d">D</div>
+        <div class="item e">E</div>
+    </section>
+
+    <h2>flex-end (아래쪽으로 몰림)</h2>
+    <section class="flex-demo ac-flex-end">
+        <div class="item a">A</div>
+        <div class="item b">B</div>
+        <div class="item c">C</div>
+        <div class="item d">D</div>
+        <div class="item e">E</div>
+    </section>
+
+    <h2>space-between (맨 위/맨 아래 고정, 나머지는 균등하게 벌어짐)</h2>
+    <section class="flex-demo ac-space-between">
+        <div class="item a">A</div>
+        <div class="item b">B</div>
+        <div class="item c">C</div>
+        <div class="item d">D</div>
+        <div class="item e">E</div>
+    </section>
+
+    <h2>space-around (각 줄 위아래에 동일한 여백 분배)</h2>
+    <section class="flex-demo ac-space-around">
+        <div class="item a">A</div>
+        <div class="item b">B</div>
+        <div class="item c">C</div>
+        <div class="item d">D</div>
+        <div class="item e">E</div>
+    </section>
+    </div>
+<!-- 정렬 3 코드 ============================ -->
+    <div class="align-items">
+        <h1>align-items</h1>
+    <p class="guide">
+        align-items는 flex 아이템들을 컨테이너의 교차축(기본은 세로축) 방향으로 어떻게 정렬할지 결정한다<br/>
+        글자 크기가 다를 때 / 아이템 높이가 다를 때 차이를 관찰하면 이해가 쉽다
+    </p>
+
+    <h2>stretch (가능한 높이 전체를 늘림)</h2>
+    <section class="flex-demo ai-stretch">
+        <div class="item a">a</div>
+        <div class="item b">b</div>
+        <div class="item c">c</div>
+        <div class="item d">d</div>
+        <div class="item e">e</div>
+    </section>
+
+    <h2>flex-start (위쪽 정렬)</h2>
+    <section class="flex-demo ai-flex-start">
+        <div class="item a">a</div>
+        <div class="item b">b</div>
+        <div class="item c">c</div>
+        <div class="item d">d</div>
+        <div class="item e">e</div>
+    </section>
+
+    <h2>center (세로 가운데 정렬)</h2>
+    <section class="flex-demo ai-center">
+        <div class="item a">a</div>
+        <div class="item b">b</div>
+        <div class="item c">c</div>
+        <div class="item d">d</div>
+        <div class="item e">e</div>
+    </section>
+
+    <h2>flex-end (아래쪽 정렬)</h2>
+    <section class="flex-demo ai-flex-end">
+        <div class="item a">a</div>
+        <div class="item b">b</div>
+        <div class="item c">c</div>
+        <div class="item d">d</div>
+        <div class="item e">e</div>
+    </section>
+
+    <h2>baseline (문자의 밑줄선 기준으로 정렬)</h2>
+    <section class="flex-demo ai-baseline">
+        <div class="item a">a</div>
+        <div class="item b">b</div>
+        <div class="item c">c</div>
+        <div class="item d">d</div>
+        <div class="item e">e</div>
+    </section>
+    </div>
+<!-- /* flex-grow ============================================== */ -->
+    <div class="flex-grow">
+        <h1>flex-grow 속성 실습</h1>
+  <p>
+    <strong>flex-grow</strong>는 남은 여유 공간을 각 flex 아이템이 얼마나 더 차지할지 비율로 설정하는 속성이다.<br>
+    (기본값은 0이며, 숫자가 클수록 공간을 더 많이 가져간다.)
+  </p>
+
+  <h2>예제 1: 마지막 박스만 flex-grow: 1</h2>
+  <div class="container container1">
+    <div class="item red">0</div>
+    <div class="item green">0</div>
+    <div class="item purple">0</div>
+    <div class="item orange">1</div>
+  </div>
+
+  <h2>예제 2: 비율 (1 : 3 : 1 : 0)</h2>
+  <div class="container container2">
+    <div class="item red">1</div>
+    <div class="item green">3</div>
+    <div class="item purple">1</div>
+    <div class="item orange">0</div>
+  </div>
+
+  <h2>예제 3: 비율 (1 : 2 : 1 : 2)</h2>
+  <div class="container container3">
+    <div class="item red">1</div>
+    <div class="item green">2</div>
+    <div class="item purple">1</div>
+    <div class="item orange">2</div>
+  </div>
+    </div>
+<!-- /* flex-shrink ============================================== */ -->
+    <div class="flex-shrink">
+        <h2>flex-shrink</h2>
+    <p>창 크기를 줄여보면 각 박스의 축소 비율이 다르게 작동한다.</p>
+    <p>0은 축소되지 않으며 1은 기본값 숫자가 클수록 더 많이 줄어든다.</p>
+  <div class="container">
+    <div class="item a">shrink: 0</div>
+    <div class="item b">shrink: 1</div>
+    <div class="item c">shrink: 3</div>
+  </div>
+    </div>
+<!-- /* align-self ============================================== */ -->
+    <div class="align-self">
+        <h2>align-self </h2>
+  <p>
+    부모는 align-items: center인데, 일부 아이템은 align-self로 따로 움직인다<br>
+    자식은 container가 아니기에 align-items를 사용할 수 없다. <br>
+    따라서 align-self를 통해 부모의 정렬 위에 덮어씌울 수 있다.
+  </p>
+
+  <div class="container">
+    <div class="item one">기본</div>
+    <div class="item two">flex-start</div>
+    <div class="item three">flex-end</div>
+    <div class="item four">stretch</div>
+  </div>
+    </div>
+<!-- pseudo  class 의사 클래스(요소가 상태가 바뀌는 순간을 선택하는 의사 클래스)-->
+    <div class="pseudo">
+        <h2>동적 의사 클래스 예제</h2>
+        <a href="https://example.com" target="_blank">원래 파랑/눌렀던거보라/커서올리면주황/클릭할때 빨강</a>
+        <br><br>
+        <input type="text" placeholder="여기에 포커스를 맞춰보세요"><br>
+        커서 클릭 or 올렸을때 border : 초록 / outline : 빨강 <br>
+        border의 경우 주변 레이아웃이 깨질 우려가 있어 outline 사용 권장
+        <h2>상태 의사 클래스 예제</h2>
+  
+        <input type="checkbox" id="chk1">
+        <label for="chk1">동의합니다</label>
+        
+        <br><br>
+        
+        <input type="text" placeholder="입력 가능">
+        <input type="text" disabled value="비활성화됨">
+    </div>
+</body>
+</html>

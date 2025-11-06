@@ -1,0 +1,92 @@
+body{
+    margin: 0 auto;
+    /* 페이지 본문은 최대 폭(1200px)을 둔 뒤 양옆 자동 여백으로 수평 중앙 정렬한다 */
+    max-width: 1200px;
+    margin : 0 auto;
+    /* 색상 대비가 충분하다(본문 글자색(#2c3e50)과 배경색(#F7F8FA)) */
+    color: #2c3e50;
+    background-color: #F7F8FA;
+    /* 본문 텍스트는 가독성 있는 줄간격과 여백이 적용된다 */
+    line-height: auto;
+}
+header{
+    /* 로고/상호명과 내비게이션이 가로로 정렬되고, 수직 가운데 정렬된다 */
+    display: flex;
+    align-items: center;
+    background-color: black;
+    padding: 16px 0;
+    h2{margin: 0 200px;color: white;}
+}
+header nav{
+    /* 내비 항목 간 16px 이상 동일 간격을 둔다 */
+    display: flex; gap: 16px;
+    margin-left: auto;
+    margin-right: 200px;
+    font-size: small;
+}
+header nav a{text-decoration: none; color: white;}
+header nav a:hover{
+    /* 항목에 호버 시 하이라이트 효과(background: rgba(255,255,255,0.12), color: #E0E7FF)가 있다 */
+    color: #E0E7FF; background: rgba(255,255,255,0.12)
+}
+main{margin: 16px 200px;display: flex;flex-direction: column;gap: 20px;}
+
+.welcome{
+    /* 텍스트 블록과 이미지가 좌우로 배치되며,  수직 중앙정렬을 한다. */
+    display: flex;
+    align-items: center;
+    .welcome__txt{
+        flex:1 1 50%;
+        width: 100%;
+        /* 텍스트에서 “카페 모카”글자를 두껍게 한다 */
+        p span{font-weight: bold;}
+    }
+    .welcome__media img{             
+        flex:1 1 50%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.location{
+    /* 자연스럽게 배치되도록 수직 중앙 정렬을 한다. */
+    display: flex;
+    align-items: center;
+    .location__media img{
+        flex:1 1 50%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.menu{
+    .card{
+        /* 카드 목록은 Flex 컨테이너로서 가로 나열되고 줄바꿈이 허용된다 */
+        display: flex; flex-wrap: wrap;
+        gap: 10px;
+        .card__{
+            /* 카드는 3열 배치를 한다. */
+            flex: 1 1 32%;
+            img{max-width: 100%;border-radius: 12px 12px 0 0;}
+            border-radius: 12px;
+            border: #d9dde0 solid 1px;
+            p{margin-left: 10px;}
+
+        }
+        /* 각 카드에 호버 시 그림자(box-shadow: 0 10px 24px rgba(0,0,0,0.08))를 적용한다. */
+        .card__:hover{box-shadow: 0 10px 24px rgba(0,0,0,0.08)}
+    }
+    
+}
+
+
+
+footer{
+    /* 배경색은 #f3f4f6이다. */
+    background-color: #f3f4f6;
+    margin: 0 200px;
+    .footer__link a{
+        text-decoration: none;
+        color: inherit;
+    }
+}

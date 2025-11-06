@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Mocha | 향긋한 커피와 휴식</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2>Cafe Mocha</h2>
+        <nav>
+            <a href="#">홈</a>
+            <a href="#">메뉴</a>
+            <a href="#">오시는길</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <div class="welcome__txt">
+                <h2>welcome</h2>
+                <p>향긋한 커피와 여유를 즐길 수 있는 <span>카페 모카</span>다</p>
+                <p>분위기 좋은 음악과 함께한 휴식, 진한 향의 음료로 당신의 하루를 더 행복하게 만들어드린다</p>
+            </div>
+            <figure class="welcome__media">
+                <img src="https://picsum.photos/800/450?1" alt="welcome section image" />
+            <figure>
+        </section>
+
+        <section class="menu">
+            <h2>Menu</h2>
+            <div class="card">
+                <div class="card__">
+                    <!--  카드 내부는 이미지/제품명/가격/정보가 들어있다.(내용들은 세로로 배치한다)  -->
+                    <img src="https://picsum.photos/800/450?2" alt="card1 image">
+                    <p>아메리카노</p>
+                    <p>￦3,500</p>
+                    <p><small>묵직한 바디감과 깔끔한 피니시다</small></p>
+                </div>
+                <div class="card__">
+                    <img src="https://picsum.photos/800/450?3" alt="card2 image">
+                    <p>카페라떼</p>
+                    <p>￦4,500</p>
+                    <p><small>부드러운 우유와 에스프레소의 조화다</small></p>
+                </div>
+                <div class="card__">
+                    <img src="https://picsum.photos/800/450?4" alt="card3 image">
+                    <p>카푸치노</p>
+                    <p>￦4800</p>
+                    <p><small>풍성한 폼과 진한 에스프레소 향이다</small></p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="location">
+            <div class="location__txt">
+                <!-- 주소/영업시간/연락처와 약도 이미지가 좌우 배치된다 -->
+                <h2>Location</h2>
+                <p>서울특별시 강남구 카페로 123, 1층</p>
+                <p>영업시간 : 매일 10:00 ~ 22:00</p>
+                <p>전화 문의 : 02-123-4567</p>
+                <p>메일 : hello@cafemocha.co.kr</p>
+            </div>
+            <figure class="location__media">
+                <img src="https://picsum.photos/800/450?5" alt="location section image" />
+            <figure>
+        </section>
+    </main>
+
+    <footer>
+        <small>&copy; 2025 Cafe Mocha</small>
+        <div class="footer__link">
+            <small><a href="#">Instargram </a></small>
+            <small><a href="#">Facebook</a></small>
+        </div>
+    </footer>
+</body>
+</html>
+
+<!-- 반응형 카페 홍보 페이지 만들기
+HTML과 CSS의 기본 문법을 사용하여 Flexbox 기반의 카페 홍보 페이지를 구현하세요.
+시맨틱 구조를 갖추고, Flex만으로 정렬·배치한다
+ 
+
+파일 구조
+필수 파일: index.html, style.css
+
+문서 제목(title): Cafe Mocha | 향긋한 커피와 휴식
+ 
+구현 요구사항
+1. html 구조
+- 전체 페이지는,,로 구성한다
+-영역에는 카페 이름(로고) 과 메뉴 항목(홈 / 메뉴 / 오시는 길) 을 작성한다
+-  영역은 다음 3개 섹션으로 구성한다
+-에는 저작권 문구 또는 SNS 링크를 작성한다
+- 모든 이미지는 의미 있는 alt 속성을 포함해야 한다
+ 
+2. CSS 레이아웃, 스타일 구조
+ 
+
+공통
+
+완 페이지 본문은 최대 폭(1200px)을 둔 뒤 양옆 자동 여백으로 수평 중앙 정렬한다
+
+완 본문 텍스트는 가독성 있는 줄간격과 여백이 적용된다
+
+완 색상 대비가 충분하다(본문 글자색(#2c3e50)과 배경색(#F7F8FA))
+
+ 
+
+<헤더>
+
+완 로고/상호명과 내비게이션이 가로로 정렬되고, 수직 가운데 정렬된다
+
+완 내비 항목 간 16px 이상 동일 간격을 둔다
+
+완 항목에 호버 시 하이라이트 효과(background: rgba(255,255,255,0.12), color: #E0E7FF)가 있다
+
+ 
+
+1대1 비율 아직 못함<Welcome 섹션>
+
+완 텍스트 블록과 이미지가 좌우로 배치되며,  수직 중앙정렬을 한다.
+
+완 텍스트에서 “카페 모카”글자를 두껍게 한다
+
+완 이미지는 태그의 자식태그로 넣는다.
+<figure class="welcome__media">
+          <img src="https://picsum.photos/800/450?1" alt="따뜻한 조명과 원목 테이블이 있는 카페 내부 전경" />
+figure>
+ 
+
+<Menu 섹션(카드 목록)>
+
+완 카드 목록은 Flex 컨테이너로서 가로 나열되고 줄바꿈이 허용된다
+
+완 카드는 3열 배치를 한다.
+
+완 카드 내부는 이미지/제품명/가격/정보가 들어있다.(내용들은 세로로 배치한다)
+
+완 각 카드에 호버 시 그림자(box-shadow: 0 10px 24px rgba(0,0,0,0.08))를 적용한다.
+
+
+Location 섹션
+
+완 주소/영업시간/연락처와 약도 이미지가 좌우 배치된다
+
+완 자연스럽게 배치되도록 수직 중앙 정렬을 한다.
+
+<Footer 섹션>
+
+완 배경색은 #f3f4f6이다.
+
+sns 링크를
+
+    Welcome Section : 간단한 인사 문구와 카페 소개 사진
+    Menu Section : 커피 3종 이상의 카드
+        - 카드의 내용에는 이미지/이름/가격/정보가 들어간다.
+        - 이미지의 경로에는 https://picsum.photos/800/450?1 를 사용한다.(? 뒤에 숫자만 바꿔 사용한다)
+    Location Section : 주소, 영업시간 정보 -->

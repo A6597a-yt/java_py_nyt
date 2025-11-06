@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: gray;
+        }
+        a:link{
+            color: red;
+            text-decoration: none;
+        }
+        a:visited{
+            color: aquamarine;
+        }
+        a:hover{
+            color: orange;
+            text-decoration: underline dotted;
+        }
+        a:active{
+            color: violet;
+        }
+        input:focus{
+            border: 2px solid rgb(169, 238, 10);
+            outline: none;
+        }
+        /* state pseudo class ======================================== */
+         input:enabled {
+            background-color: #94cedd;
+        }
+
+        input:disabled {
+            background-color: #267bb4;
+        }
+
+        input:checked + label {
+            /* 동의합니다 체크시 색 변경 */
+            color: #e91159;
+            font-weight: bold;
+        }
+        /* structure pseudo class ======================================== */
+        ul li:first-child {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        ul li:nth-child(2) {
+            color: #e74c3c;
+        }
+
+        p:first-of-type {
+            color: #16a085;
+        }
+
+        p:nth-of-type(2) {
+            text-decoration: underline;
+        }
+         /* other pseudo class ======================================== */
+         /* :not 사용 */
+        p:not(.highlight) {
+            color: pink;
+        }
+
+        /* :lang 사용 */
+        p:lang(en) {
+            font-style: italic;
+            color: #46e287;
+        }
+    </style>
+</head>
+<body>
+    <h2>동적 의사 클래스 예제</h2>
+    <a href="#">llinklinklinlklkd</a> <br><br>
+    <input type="text" placeholder="써">
+    <!-- /* state pseudo class ======================================== */ -->
+     <h2>상태 의사 클래스 예제</h2>
+  
+    <input type="checkbox" id="chk1">
+    <label for="chk1">동의합니다</label>
+    
+    <br><br>
+    
+    <input type="text" placeholder="입력 가능">
+    <input type="text" disabled value="비활성화됨">
+
+    <!-- /* structure pseudo class ======================================== */ -->
+
+    <h2>구조 의사 클래스 예제</h2>
+
+    <ul>
+        <li>첫 번째 항목</li>
+        <li>두 번째 항목</li>
+        <li>세 번째 항목</li>
+    </ul>
+
+    <p>첫 번째 문단</p>
+    <p>두 번째 문단</p>
+    <div>이건 div라서 p:nth-of-type에 포함되지 않음</div>
+
+    <!-- /* other pseudo class ======================================== */ -->
+
+    <h2>기타 의사 클래스 예제</h2>
+
+    <p>이 문장은 기본 스타일입니다.</p>
+    <p class="highlight">이 문장은 강조 문장입니다.</p>
+    <p lang="en">This is an English sentence.</p>
+</body>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            text-align: center;
+            border : 1px solid black;
+        }
+        
+        header{
+            background-color: aqua;
+            /* 문제가 되는 줄 */
+            /* border: 1px solid black; */
+            padding: 10px;
+        }
+
+        h1{
+            margin : 0;
+        }
+
+        nav{
+            background-color: olive;
+            border:  black solid;
+        }
+        nav a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            padding: 0 10px;
+        }
+
+        main{
+            background: rgb(221, 186, 192);
+            border: rgb(117, 196, 27) solid;
+            display: flex;
+            padding: 16px;
+        }
+        section{
+            background: white;
+            border: black solid;
+            align-self: stretch;
+            flex-basis: 70%;
+        }
+        aside{
+            border: rgb(143, 59, 59) solid;
+            align-self: stretch;
+            background: gray;
+            flex-basis: 30%;
+        }
+        footer{
+            background-color: rgb(132, 130, 212);
+            padding: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Flexbox Layout 연습</div>
+    </header>
+
+    <nav>
+        <a href="#">홈</a>
+        <a href="#">공지사항</a>
+        <a href="#">문의</a>
+    </nav>
+
+    <main class="flex-box">
+        <section>
+            <h1>메인 콘텐츠</h1>
+            <p>이 영역은 본문 내용을 표시하는 구역이다.</p>
+            <p>Flexbox를 이용해 왼쪽에 배치된다.</p>
+        </section>
+
+        <aside>
+            <h1>사이드바</h1>
+            <p>보조 정보나 공지사항을 표시하는 구역이다.</p>
+        </aside>
+    </main>
+
+
+    <footer>
+        <p>&copy;2025 Flex Layout Practice</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>형변환 실습 (순수 자바스크립트)</title>
+</head>
+<body>
+  <script>
+    // ==============================
+    // 1️⃣ 명시적 형변환 (Explicit Conversion)
+    // ==============================
+    let num1 = Number('42');         // 42
+    let num2 = parseInt('3.14');     // 3
+    let num3 = parseFloat('3.14');   // 3.14
+    console.log('num1:', num1, 'num2:', num2, 'num3:', num3);
+
+    let str1 = String(123);          // '123'
+    let str2 = (456).toString();     // '456'
+    console.log('str1:', str1, 'str2:', str2);
+
+    let bool1 = Boolean(0);          // false
+    let bool2 = Boolean('0');        // true
+    let bool3 = Boolean('');         // false
+    let bool4 = Boolean([]);         // true
+    console.log('bool1:', bool1, 'bool2:', bool2, 'bool3:', bool3, 'bool4:', bool4);
+
+    // ==============================
+    // 2️⃣ 암묵적 형변환 (Implicit Conversion)
+    // ==============================
+    let implicit1 = '5' + 2;         // '52'
+    let implicit2 = 'Hello' + true;  // 'Hellotrue'
+    let implicit3 = '5' - 2;         // 3
+    let implicit4 = true - 1;        // 0
+    let implicit5 = false - 1;       // -1
+    console.log('implicit1:', implicit1, 'implicit2:', implicit2, 'implicit3:', implicit3, 'implicit4:', implicit4, 'implicit5:', implicit5);
+
+    let eq1 = ('5' == 5);            // true
+    let eq2 = (0 == false);          // true
+    let eq3 = ('' == 0);             // true
+    let eq4 = (null == undefined);   // true
+    console.log('eq1:', eq1, 'eq2:', eq2, 'eq3:', eq3, 'eq4:', eq4);
+
+    let strict1 = (0 === false);     // false
+    let strict2 = ('5' === 5);       // false
+    console.log('strict1:', strict1, 'strict2:', strict2);
+
+    let logic1 = !!'hello';          // true
+    let logic2 = !!'';               // false
+    let logic3 = ('hi' || 'bye');    // 'hi'
+    let logic4 = (0 || 'bye');       // 'bye'
+    console.log('logic1:', logic1, 'logic2:', logic2, 'logic3:', logic3, 'logic4:', logic4);
+
+    // ==============================
+    // 3️⃣ 예외 케이스
+    // ==============================
+    let tricky1 = ([] == 0);         // true
+    let tricky2 = ([] == '');        // true
+    let tricky3 = ([0] == 0);        // true
+    let tricky4 = (NaN === NaN);     // false
+    let tricky5 = Number.isNaN(NaN); // true
+    console.log('tricky1:', tricky1, 'tricky2:', tricky2, 'tricky3:', tricky3, 'tricky4:', tricky4, 'tricky5:', tricky5);
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flex 정렬 비교</title>
+<style>
+body {
+  background: #f0f0f0;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+/* 공통 flex 컨테이너 스타일 */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 250px;
+  margin-bottom: 30px;
+  border: 2px solid #333;
+  background: white;
+}
+
+/* 내부 박스 스타일 */
+.box {
+  width: 100px;
+  height: 60px;
+  background: skyblue;
+  border: 1px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* 1️⃣ justify-content : 주축 정렬 */
+.justify {
+  justify-content: space-around; /* 가로축 정렬 */
+}
+
+/* 2️⃣ align-items : 한 줄 내에서 세로 정렬 */
+.align-items {
+  align-items: center; /* 교차축 정렬 (줄 하나 기준) */
+}
+
+/* 3️⃣ align-content : 여러 줄 간 세로 정렬 (wrap 필요) */
+.align-content {
+  align-content: space-between; /* 교차축 정렬 (줄 여러 개 기준) */
+}
+
+/* 줄바꿈 안되는 케이스 확인용 */
+.nowrap {
+  flex-wrap: nowrap;
+}
+</style>
+</head>
+<body>
+
+<h2>1️⃣ justify-content (가로 정렬)</h2>
+<div class="container justify">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<h2>2️⃣ align-items (한 줄 세로 정렬)</h2>
+<div class="container align-items nowrap">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+</div>
+
+<h2>3️⃣ align-content (여러 줄 세로 정렬)</h2>
+<div class="container align-content">
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+  <div class="box">6</div>
+</div>
+
+</body>
+</html>

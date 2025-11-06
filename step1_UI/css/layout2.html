@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: gray;
+            /* height: 70vh; */
+            border: solid pink;
+
+        }
+        header{background-color: gainsboro;border: solid;}
+        header h1{padding: 0;margin: 10px;text-align: center;}
+        main{padding: 16px;}
+        section{
+            border: solid tomato;
+            display: flex;
+            margin: 10px 0;
+
+        }
+        .fl{
+            width: 640px;
+            height: 320px;
+            /* flex: 0 0 40%; */
+            border: blue solid;
+            margin: 10px 0 10px 10px ;
+            display: flex;
+            justify-content: center;  /* 가로 가운데 */
+            align-items: center;      /* 세로 가운데 */
+            margin-left: auto;
+
+        }
+        .flex-wrap{
+            border: solid yellowgreen;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .flex-wrap h3{
+            color: rgb(204, 193, 193);
+            /* padding: 0;
+            margin-bottom: auto; */
+        }
+        article{
+            border: solid;
+            flex: 1 1 200px;
+        }
+        .expand{
+            flex-grow: 1;
+        }
+        footer{background-color: antiquewhite;border: solid;text-align: center;}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Branding Landing다</h1>
+        <nav></nav>
+    </header>
+
+    <main>
+        <section>
+            <div>
+                <h2>간결한 메시지로 주목을 끈다다</h2>
+                <p>핵심가치와 행동유도 문구를 짧고 명확하게 배치한다</p>
+            </div>
+            <div class="fl">640*360 자리다</div>
+        </section>
+
+        <div class="flex-wrap">
+            <h3>핵심 기능이다</h3>
+            <article>
+                <p>간단하다</p>
+                <p>짧은 설명이다</p>
+            </article>
+            <article>
+                <p>빠르다</p>
+                <p>짧은 설명이다</p>
+            </article>
+            <article class="expand">
+                <p>확장된다</p>
+                <p>짧은 설명이다</p>
+            </article>
+        </div>
+
+        
+    </main>
+
+    <footer>
+        <p>&copy;2025 Split Hero이다</p>
+    </footer>
+
+    
+
+</body>
+</html>

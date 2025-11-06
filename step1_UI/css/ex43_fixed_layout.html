@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>고정 레이아웃</title>
+<style>
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  background: #ecf0f1;
+  display: flex;
+}
+.box {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  background: #3498db;
+  color: white;
+  margin: 10px;
+}
+/* ============================================= */
+* { box-sizing: border-box; }
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+/* 공통 박스 스타일 */
+.box {
+  flex: 1 1 100%;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  background: #3498db;
+  color: white;
+}
+
+/* 태블릿 이상 */
+@media (min-width: 768px) {
+  .box {
+    flex: 1 1 45%;
+  }
+}
+
+/* 데스크탑 이상 */
+@media (min-width: 1200px) {
+  .box {
+    flex: 1 1 30%;
+  }
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">박스1</div>
+        <div class="box">박스2</div>
+        <div class="box">박스3</div>
+    </div>
+  <!-- ============================ -->
+    <div class="container">
+        <div class="box">박스1</div>
+        <div class="box">박스2</div>
+        <div class="box">박스3</div>
+    </div>
+</body>
+</html>

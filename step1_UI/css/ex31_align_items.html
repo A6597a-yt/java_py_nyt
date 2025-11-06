@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="box.css">
+    <style>
+         body{
+            background-color: gray;
+        }
+        section{
+            display: flex;
+            border: dashed;
+            align-items: baseline;
+        }
+        .box{
+            /* 중앙정렬 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .a{
+            height: 100px;
+            font-size: 50px;
+        }
+        .b{
+            height: 70px;
+        }
+        .c{
+            height: 150px;
+            font-size: 80px;
+        }
+        .d{
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>flex-start</h2>
+    <section class="flex-start">
+        <div class="box a">01</div>
+        <div class="box b">02</div>
+        <div class="box c">03</div>
+        <div class="box d">04</div>
+        <div class="box e">05</div>
+        <div class="box f">06</div>
+    </section>
+</body>
+</html>

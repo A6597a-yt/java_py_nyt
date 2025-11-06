@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{background-color: gray;}
+
+        .container{
+            border: solid 1px red;
+            display: flex;
+            width: 500px;
+        }
+        .box{border: solid 4px;
+            width: 100px;
+            box-sizing: content-box;
+            opacity: 0.5;
+        }
+        
+        
+        /* box-sizing: border-box;} */
+        .box:hover {border-color: red;}
+        .box:active{border-color: blue;}
+        .container2{border: solid 1px;display: flex;width: 600px;border: solid 2px pink;}
+        .over {
+            width: 100px;
+            border: 1px solid #333;
+            overflow: hidden;        /* 넘치는 부분 숨기기 */
+            text-overflow: ellipsis; /* 말줄임(...) 표시 */
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">한글이라면 이거는 안나가고 줄바꿈됨</div>
+        <div class="box">but if it is english it go out shhhhhhhhhhhhhhhit</div>
+        <!-- <div class="box">box</div>
+        <div class="box">box</div>
+        <div class="box">box</div> -->
+    </div><br>
+    <div class="container2">234</div><br>
+    <div class="over">
+        wqewqewqrqwretewtwetwetrwtetetret
+    </div>
+</body>
+</html>
