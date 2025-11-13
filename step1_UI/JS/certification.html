@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}</style>
+</head>
+<body>
+    <script>
+        // class Student{
+        //     constructor(name, age, major){
+        //         this.name = name;
+        //         this.age = age;
+        //         this.major = major;
+        //     }
+        //     introduce(){
+        //         document.write(`저의 이름은 ${this.name} 나이는 ${this.age} 전공은 ${this.major}입니다.`);
+        //         document.write('<br>'); // 줄바꿈
+        //     }
+        // }
+        // const st1 = new Student("steve",25,"Math");
+        // const st2 = new Student("sara",27,"soccer");
+        // st1.introduce();
+        // st2.introduce();
+        // document.write('<br>'); // 줄바꿈
+
+        // const car = {
+        //     brand : "Hyundai",
+        //     model : "sonata"
+        // }
+        // car.year = 2024;
+        // car.model = "Avante";
+        // document.write(car.brand , car.model, car.year);
+        // document.write('<br><br>'); // 줄바꿈
+
+        // const subject = {
+        //     kor : 85,
+        //     eng : 90,
+        //     math : 78
+        // }
+        // for (const a in subject){
+        //     document.write(`${a} : ${subject[a]}<br>`);
+        // }
+
+        // const users = [ 
+        //     {name:"kim",age:20},
+        //     {name:"lee",age:25},
+        //     {name:"park",age:30}
+        // ]
+        // for (const b of users){
+        //     document.write(`${b.name} <tap>`);
+        // }
+        // document.write('<br><br>'); // 줄바꿈
+
+        // for (const b in users){
+        //     if (users[b].age >=25){
+        //         document.write(`${users[b].name} ${users[b].age} <tap>`);
+        //     }
+            
+        // }
+        document.write("계산기 코드 =============<br>")
+        class Calculator{
+            constructor(){
+            }
+            add(a,b){
+                return a+b;
+            }
+            subtract(a, b){
+                return a-b;
+            }
+            multiply(a, b){
+                return a*b;
+            }
+            divide(a, b){
+                return b===0?'0으로 나눌 수 없습니다.' : a/b
+            }
+        }
+        const cal1 = new Calculator;
+        document.write(cal1.divide(1,0));
+        document.write('<br><br>') // 줄바꿈
+        document.write("학생 코드 =============<br>")
+
+        const student = {
+            name : "steve",
+            scores : [],
+            add_score  : function(score){
+                this.scores.push(score);
+            },
+            get_average : function(){
+                let sum = 0;
+                for (const v of this.scores){
+                    sum += v; 
+                }
+                return sum/this.scores.length;
+            },
+            get_name_ave : function(){
+                document.write(this.name+ " "+ this.get_average())
+            }
+        }
+        student.add_score(60);
+        student.add_score(90);
+        student.add_score(30);
+        document.write(student.scores);
+        document.write('<br>') // 줄바꿈
+        document.write(student.get_average());
+        document.write('<br>') // 줄바꿈
+        student.get_name_ave();
+        document.write('<br><br>') // 줄바꿈
+
+        document.write("cart 코드 =============<br>")
+        const cart = {
+            items : [],
+            add_item : function(i,p){
+                cart.items.push({name : i , price : p})
+            },
+            get_totalPrice : function(){
+                let sum = 0
+                for (const v of this.items){
+                    sum += v.price;
+                }
+                return sum;
+            },
+            get_totalList_totalPrice : function(){
+                for (const v of this.items){
+                    document.write(v.name+" "+v.price +"<br>")
+                }
+                document.write("총 가격 : "+this.get_totalPrice());
+            }
+        }
+        cart.add_item("popcorn",1000);
+        cart.add_item("coffee",2000);
+        cart.add_item("bread",3000);
+        document.write(cart.get_totalPrice());
+        document.write('<br>') // 줄바꿈
+        cart.get_totalList_totalPrice();
+        document.write('<br>') // 줄바꿈
+
+        function arrayAvg(arr){
+            if (arr.length===0){return 0;}
+            let sum =0 ;
+            for (let a of arr){sum+=a;}
+            return sum / arr.length;
+        }
+        const arr2 = [1,2,3]
+        document.write(arrayAvg(arr2));
+
+        document.write('<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'); // 줄바꿈
+    </script>
+
+선점
+RB
+SRT
+
+비선점
+hrn
+SJF
+FCFS
+
+내공외제스자
+우논시절 교순기
+물데네 전세표응
+
+디자인패턴
+생성, 구조 ,행위
+
+<생성>
+추상팩토리      관련 객체를 일관된 방식으로 생성 / 제품간 일관성 유지
+팩토리메서드    객체생성을 서브클래스에 위임
+빌더           복잡한 객체 생성과정을 단계별로 조립하는것 
+User user = new User("홍길동", 25, "서울", true, "010-1234-5678");
+대신 this를 써서 보기좋게하는것
+
+프로토타입     새로운 객체를 생성할때 기존 객체를 복제하여 만든다
+싱글톤         단 하나의 객체만 생성되도록 보장
+
+<구조>
+adapter        서로 호환되지 않는 인터페이스를 가진 클래스를 중간에 연결
+bridge         기능과 구현을 분리
+composite      객체를 트리구조로 구성 / 재귀처리 / 클라이언트 단순화
+decorator      기존 클래스를 수정하지 않고 기능을 확장
+facade         단순화된 인터페이스로 복잡함을 감춤
+flyweight      공통된 부분은 공유해서 메모리 절감
+proxy          대리인 이라는 뜻
+
+<행위>
+mediator 중재
+interpreter 해석
+iterator 반복자 (컬렉션의 모든 요소를 본다)
+template method 상속 sub class 
+stratagy 전략을 선택해서 교체 혹은 교환
+observer 한 객체의 변화가 자동으로 여러 객체에 전파된는 구조
+주식 가격 변동이 되면 내 어플에서 바뀜
+state 객체 상태를 캡슐화 한다
+visitor 기능 행동을 외부 방문자로 분리해서 확장
+
+cardinality 행 갯수
+domain		attribute가 가질 수 있는 값들의 집합
+attribute	속성
+
+ip 주소와 subnet mask
+
+
+1111 1111
+1111 1111
+1100 0000
+0000 0000
+
+ip주소의 첫 옥텟을 보고 abcd 클래스를 결정한다
+0xxx xxxx : 0~127 일경우 A클래스이며 서브넷 마스크는 255.0.0.0 이 된다.
+10xx xxxx : 128~191 일경우 B 클래스 서브넷 마스크는 255.255.0.0
+110x xxxx : 192~223
+
+DoS : 서비스 거부 공격
+ping of death : 패킷의 크기를 크게 전송
+smurfing : 브로드캐스트에 icmp를 보내 네트워크 전체장치가 피해자에게 메세지를 보내도록함
+teardrop : 패킷 재조립을 눈물 방울 처럼 산개시켜서 과부하 유도
+land : 발신 수신 주소 모두 공격대상ip로 설정하여 무한 반송유도
+DDoS : 분산 공격
+
+
+스미싱 : 구라
+스피어 피싱 : 창으로 한놈만 패기 / 이메일
+apt(지능혁 지속 위협)
+큐싱 : qr 사기
+sql 삽입 공격 : 명령어 내가 조작하는것(이 test 무조건 통과)
+xss : 웹페이지 해킹하고 함정설치하여 방문자 털기
+
+제로데이 공격 : ㅈㄴ 빠른 공격
+키로거 공격 : 키보드 입력 탐지해서 정보 빼가는것
+랜섬웨어 : 파일 잠그고 몸값 요구
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>p 스타일 변경 예제</title>
+  <style>
+    body{background-color: gray;}
+    #myParagraph {
+      color: black;
+      font-size: 16px;
+      border
+    }
+  </style>
+</head>
+<body>
+  <p id="myParagraph">안녕하세요! 버튼을 눌러 스타일을 바꿔보세요.</p>
+  <button id="myButton">스타일 변경</button>
+    <p> js로 css 바꾸기 연습 idx1</p>
+    <p> js로 css 바꾸기 연습 idx2</p>
+    <p> js로 css 바꾸기 연습 idx3</p>
+    <p> js로 css 바꾸기 연습 idx4</p>
+    <p> js로 css 바꾸기 연습 idx5</p>
+    <p> js로 css 바꾸기 연습 idx6</p>
+  <script>
+    // p와 button 요소 가져오기
+    const paragraph = document.getElementById("myParagraph");
+    const button = document.getElementById("myButton");
+
+    // 버튼 클릭 시 스타일 변경
+    button.addEventListener("click", function() {
+      paragraph.style.color = "red";      // 글자색 변경
+      paragraph.style.fontSize = "24px";  // 글자 크기 변경
+      paragraph.style.fontWeight = "bold"; // 글자 굵기 변경
+    });
+
+
+    const element = document.querySelectorAll("p");
+    for (let a in element){
+        if (a%3===0){
+            element[a].style.border = "solid";
+
+        }
+        else if (a%3===1) {
+            element[a].style.font = "bold 30px 궁서 ";
+        }
+        else element[a].style.color = "orange";
+        
+    }
+
+
+  </script>
+</body>
+</html>
+
+node n = B, *h
+node h = B, *h;
+*s = BEST
+n.c = B;
+n.p = h;
+h = n

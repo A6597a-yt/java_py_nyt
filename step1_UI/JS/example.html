@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}</style>
+</head>
+<body>
+    <script>
+    let i =1;
+    for (i=1;i<30;i++){
+        let k = 1;
+        let sum = 0;
+        for (k=1;k<i;k++){
+            if (i%k===0){sum+=k}
+        }
+        if (sum===i)document.write(`${i}는 완전수이다.<br>`);
+        // else document.write(`${i}는 완전수가 아니다.<br>`);
+    }
+    let n = 12030;
+    let copy_n = n;
+    let answer = 0;
+    for(i=0;i<12;i++){
+        if (10**i <=n && n<10**(i+1))break;
+    }
+
+    while(i>=0){
+        answer += (n%10) * (10**i);
+        n = Math.floor(n/10);
+        i--;
+    }
+    document.write(`${copy_n}을 뒤집으면 ${answer}<br>`);
+
+    let sum = 0;
+    n=0;
+    i=1;
+    while (i<=45){
+        if (i%3!==0){
+            sum += i;
+            n++;
+        }
+        i++;
+    }
+    document.write(`합계 : ${sum}, 평균 : ${sum/n}`);
+    </script>
+</body>
+</html>
+
+<!-- IP address ‘172.16.0.0’인 경우에 이를 14개의 서브넷으로 나누어 사용하고자 할 경우 서브넷 마스크 값을 쓰시오. -->

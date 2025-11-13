@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{background-color: gray;}
+    #content {        white-space: pre-line;        }
+    header{
+        display: flex;
+        input{flex-shrink: 4;margin-left: 3px;}
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <b>단 : </b>
+        <input type="number" id="ii">
+        <button id="calc">계산</button>
+        <button id="hide">숨기기</button>
+    </header>
+
+    <p id="content"></p>
+
+    <script>
+        const content = document.querySelector("#content")
+        const btn1 = document.querySelector("#calc")
+        const btn2 = document.querySelector("#hide")
+        
+        
+        let savedText = ""; 
+        let hidden = false; // toggle
+
+        function calc(){
+            const arr = [1,2,3,4,5,6,7,8,9];
+            const num = document.querySelector("#ii").value;
+            content.textContent = "";   // 매번 초기화
+            if (num<2 || num>9) {
+                alert("2~9 사이의 숫자를 입력해주세요");
+                return;
+            }
+            arr.forEach(element => {
+                if (num>=2 && num<=9)
+                content.textContent += `${num} X ${element} = ${num*element}\n`;
+            });
+        }
+        btn1.addEventListener("click",calc)
+
+        const ii = document.querySelector("#ii")
+        function update(){
+            const arr = [1,2,3,4,5,6,7,8,9];
+            const num = document.querySelector("#ii").value;
+            arr.forEach(element => {
+                if (num>=2 && num<=9)
+                content.textContent += `${num} X ${element} = ${num*element}\n`;
+            });
+        }
+        ii.addEventListener("input",update)
+
+        function hide(){
+            if (!hidden){
+                savedText = content.textContent;
+                content.textContent = ""
+                btn2.textContent = "보여지기"
+                hidden = true;
+            } else {
+                content.textContent = savedText;
+                btn2.textContent = "숨기기"
+                hidden = false;
+            }
+        }
+        btn2.addEventListener("click",hide)
+    </script>
+</body>
+</html>

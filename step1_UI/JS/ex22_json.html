@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JSON
+        const arr = [
+            {a:1, b:2},
+            {a:3, b:4}
+        ]
+        // JS 객체 -> json 문자열
+        const json = JSON.stringify(arr)
+        console.log(json) 
+        // '[{"a":1,"b":2},{"a":3,"b":4}]'
+
+        // json -> js 객체로 변환
+        const obj = JSON.parse(json);
+        console.log(obj.name); // 홍길동이다
+
+        console.log(student[0].fiends[1].name)
+
+    </script>
+</body>
+</html>

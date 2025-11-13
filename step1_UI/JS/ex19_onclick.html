@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}
+        .box{background-color: yellow;width: 100px; height: 100px;  margin-bottom: 10px; display: flex; align-items: center;}
+        .red{background-color : red;        }
+        .pink{background-color : pink;        }
+        .blue{background-color: blue;}
+        .black{background-color: black;}
+    </style>
+    
+</head>
+<body>
+    <button onclick="a()">alert test</button>
+    <button onclick="b()">alert test</button>
+    <button onclick="c()">alert test</button><br>
+
+    <input type="text" oninput="showText()" value="여기 입력하면 p 값이 변함">
+    <p>p_tag</p><p>p_tag</p><p>p_tag</p><p>p_tag</p>
+
+    <div id="box" class="box">색 변하는 박스</div>
+    <button onclick="cc_cl()" onmouseover="cc_cl_mo()">class로 색 변경</button><br>
+    <script>
+        function a(){alert("111")}
+        let b = function(){alert("222")}
+        let c = () => alert("333")
+    
+        // input태그에 글을 적으면 p태크에 나타나는 기능 만들기
+        const showText = () => {
+            // 1. p 태그를 js가 선택하도록 함
+            const input = document.querySelector("input").value;
+            const ppp = document.querySelectorAll("p");
+            ppp.forEach(p => {p.textContent = input;
+            });
+        };
+        
+        // 버튼 누르면 색 변경되는 기능 만들기
+        const cc_cl = () =>{
+            const bc = document.querySelector("#box");
+            if (bc.classList.contains("red")) {
+                bc.classList.remove("red");
+                bc.classList.add("pink");
+            } else {
+                bc.classList.remove("blue","pink","black");
+                bc.classList.add("red");
+            }
+        }
+        const cc_cl_mo = () =>{
+            const bc = document.querySelector("#box");
+            if (bc.classList.contains("red")||bc.classList.contains("pink")){
+                bc.classList.remove("pink","red");
+                bc.classList.add("blue");
+            }
+        }
+
+
+    </script>
+</body>
+</html>
+

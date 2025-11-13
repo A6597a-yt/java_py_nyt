@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{background-color: gray;}
+    table { border: 1px solid; border-collapse: collapse; }
+    th, tr{border: 1px solid;padding: 6px 10px;}
+    .calc{text-align: center;}
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="num1">
+            <th>수1</td>
+            <td>
+                <input type="number" id="num1">
+            </th>
+        </tr>
+
+        <tr class="num2">
+            <th>수2</td>
+            <td>
+                <input type="number" id="num2">
+            </td>
+
+        </tr>
+
+        <tr class="calc">
+            <td colspan="2">
+                <button id="add">+</button>
+                <button id="sub">-</button>
+                <button id="mul">x</button>
+                <button id="div">/</button>
+            </td>
+            
+        </tr>
+
+        <tr class="answer">
+            <th>답</td>
+            <td>
+                <p id="answer"></p>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        const qs = s => document.querySelector(s);
+        const answer = qs("#answer");
+
+        const calc = (op) =>{
+            const num1 = Number(qs("#num1").value)
+            const num2 = Number(qs("#num2").value)
+            switch(op){
+                case "add" : return num1 + num2;
+                case "sub" : return num1 - num2;
+                case "mul" : return num1 * num2;
+                case "div" : return num2===0 ? "0으로 못나눔" : num1 / num2;
+            }
+        };
+
+        ["add","sub","mul","div"].forEach(element => {
+            qs("#"+element).addEventListener("click",() =>{
+                answer.textContent = calc(element);
+            })
+        });
+        
+    </script>
+
+</body>
+</html>

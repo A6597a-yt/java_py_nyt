@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{background-color: gray;}
+    .btn1_y{background-color: yellow;}
+    .btn1_r{background-color: red;}
+    </style>
+</head>
+<body>
+    <!-- 버튼을 누를때마다 화면의 숫자가 증가함 -->
+    <button id="btnCount">증가시키키</button>
+    <p id="result">7</p>
+
+    <!-- 버튼을 누를때 마다 배경색이 yellow ↔ red 교체 
+    classList.toggle 사용-->
+    <button id="btn_bc">색 토글 버튼</button>
+
+    <script>
+        // <!-- 버튼을 누를때마다 화면의 숫자가 증가함 -->
+        const sb = document.querySelector("#btnCount")
+        const sp = document.querySelector("#result")
+        let k = 8
+        function btn_ccc(){
+                sp.textContent = k++; 
+        }
+        sb.addEventListener("click",btn_ccc)
+
+        // <!-- 버튼을 누를때 마다 배경색이 yellow ↔ red 교체 
+        // classList.toggle 사용-->
+        const btn_1 = document.querySelector("#btn_bc")
+        const body = document.querySelector("body")
+        function btn_bc(){
+            if (body.classList.contains("btn1_y")) {
+                body.classList.remove("btn1_y");
+                body.classList.add("btn1_r");
+            } else {
+                body.classList.remove("btn1_r");
+                body.classList.add("btn1_y");
+            }
+        }
+        btn_1.addEventListener("click",btn_bc)
+    </script>
+
+    
+</body>
+</html>

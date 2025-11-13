@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}</style>
+</head>
+<body>
+    <button id="bt1">btn1</button>
+    <button id="bt2">btn2</button>
+
+    <script>
+    const btn1 = document.querySelector("#bt1");
+    const btn2 = document.querySelector("#bt2");
+
+    function btn_listener(event){
+        switch(event.target.id){
+            case 'bt1':
+                document.body.style.backgroundColor = "green";
+                break;
+            case 'bt2':
+                document.body.style.backgroundColor = "black";
+                break;
+        }
+    }
+
+    btn1.addEventListener("click", btn_listener);
+    btn2.addEventListener("click", btn_listener);
+</script>
+</body>
+</html>

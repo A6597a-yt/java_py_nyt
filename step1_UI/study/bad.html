@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>배드민턴 복식 코트</title>
+<style>
+  :root{
+    /* 실측 비율: width / length = 6.1 / 13.4 ≈ 0.455 */
+    --aspect: 0.455;
+    --line: 3px;          /* 선 두께 */
+    /* 규격을 전체 길이(=100%) 대비 퍼센트로 변환 */
+    --short-svc: 14.776%; /* 1.98 / 13.4 * 100 */
+    --dbl-long: 5.672%;   /* 0.76 / 13.4 * 100 */
+  }
+  html, body { height: 100%; margin: 0; }
+  body { background:#111; }
+
+  /* 세로 가득 채우고 가로는 비율 유지 */
+  .wrap {
+    height: 100dvh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  .court {
+    position: relative;
+    height: 100%;
+    width: 100vw;          /* ← 기존: min(...) 대신 100vw 로 변경 */
+    background: #0b6e4f;
+    border: var(--line) solid #eee;   /* 엔드라인(상하) + 사이드라인(좌우) */
+    box-sizing: border-box;
+    user-select: none;
+    touch-action: none;
+    border-radius: 8px;
+  }
+
+  /* 공통 라인 스타일 */
+  .line { position: absolute; background:#eee; }
+
+  /* 네트(코트 중앙 가로선) */
+  .net {
+    left: 0; right: 0; height: var(--line);
+    top: 50%; transform: translateY(-50%);
+  }
+
+  /* 짧은 서브라인(네트에서 ±1.98m) */
+  .short-top {
+    left: 0; right: 0; height: var(--line);
+    top: calc(50% - var(--short-svc));
+  }
+  .short-btm {
+    left: 0; right: 0; height: var(--line);
+    top: calc(50% + var(--short-svc));
+  }
+
+  /* 복식 롱서브라인(엔드라인에서 0.76m 안쪽) */
+  .dbl-top {
+    left: 0; right: 0; height: var(--line);
+    top: var(--dbl-long);
+  }
+  .dbl-btm {
+    left: 0; right: 0; height: var(--line);
+    bottom: var(--dbl-long);
+  }
+
+  /* 센터라인: 각 코트에서 짧은 서브라인~엔드라인 구간만 표시 */
+  .center-top, .center-btm {
+    width: var(--line); left: 50%; transform: translateX(-50%);
+  }
+  .center-top {
+    top: var(--dbl-long);
+    height: calc(50% - var(--short-svc) - var(--dbl-long));
+  }
+  .center-btm {
+    top: calc(50% + var(--short-svc));
+    height: calc(50% - var(--short-svc) - var(--dbl-long));
+  }
+
+  /* 드래그 가능한 원 */
+  .dot {
+    position: absolute;
+    width: clamp(36px, 8vw, 60px);
+    height: clamp(36px, 8vw, 60px);
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0,0,0,.25);
+    cursor: grab;
+    touch-action: none;
+  }
+  .dot:active { cursor: grabbing; }
+
+  #dot1 { background:#ff5a5f; left: 10%; top: 20%; }
+  #dot2 { background:#2ecc71; left: 30%; top: 35%; }
+  #dot3 { background:#3498db; left: 60%; top: 18%; }
+  #dot4 { background:#f1c40f; left: 75%; top: 60%; }
+
+  /* 하얀 소형 원(셔틀 등) */
+  #shuttle {
+    background:#fff; border: 2px solid rgba(0,0,0,.25);
+    width: clamp(20px, 5vw, 28px);
+    height: clamp(20px, 5vw, 28px);
+    left: 48%; top: 55%;
+    box-shadow: 0 2px 8px rgba(0,0,0,.3), 0 0 0 2px #fff inset;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="court" id="court">
+      <!-- 코트 라인들 -->
+      <div class="line net"></div>
+      <div class="line short-top"></div>
+      <div class="line short-btm"></div>
+      <div class="line dbl-top"></div>
+      <div class="line dbl-btm"></div>
+      <div class="line center-top"></div>
+      <div class="line center-btm"></div>
+
+      <!-- 드래그 가능한 원들 -->
+      <div class="dot" id="dot1" aria-label="빨간 원"></div>
+      <div class="dot" id="dot2" aria-label="초록 원"></div>
+      <div class="dot" id="dot3" aria-label="파란 원"></div>
+      <div class="dot" id="dot4" aria-label="노란 원"></div>
+      <div class="dot" id="shuttle" aria-label="하얀 원"></div>
+    </div>
+  </div>
+
+<script>
+  const field = document.getElementById('court');
+  let dragging = null, offsetX = 0, offsetY = 0, pid = null;
+
+  field.addEventListener('pointerdown', (e) => {
+    const t = e.target;
+    if (!t.classList.contains('dot')) return;
+    dragging = t; pid = e.pointerId;
+
+    const r = t.getBoundingClientRect();
+    offsetX = e.clientX - r.left;
+    offsetY = e.clientY - r.top;
+    t.setPointerCapture(pid);
+  });
+
+  field.addEventListener('pointermove', (e) => {
+    if (!dragging || e.pointerId !== pid) return;
+
+    const fr = field.getBoundingClientRect();
+    const w = dragging.offsetWidth, h = dragging.offsetHeight;
+
+    let x = e.clientX - fr.left - offsetX;
+    let y = e.clientY - fr.top  - offsetY;
+
+    x = Math.max(0, Math.min(x, field.clientWidth  - w));
+    y = Math.max(0, Math.min(y, field.clientHeight - h));
+
+    dragging.style.left = x + 'px';
+    dragging.style.top  = y + 'px';
+  });
+
+  function endDrag(e){
+    if (!dragging) return;
+    dragging.releasePointerCapture?.(pid);
+    dragging = null; pid = null;
+  }
+  field.addEventListener('pointerup', endDrag);
+  field.addEventListener('pointercancel', endDrag);
+  field.addEventListener('pointerleave', e => { if (dragging) endDrag(e); });
+</script>
+</body>
+</html>

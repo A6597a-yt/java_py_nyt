@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{background-color: gray;}
+    #img{width: 200px; height: 200px;}
+    body{display: flex;}
+    button, #prev{width: 20px;height: 20px;align-self: center;}
+    </style>
+</head>
+<body>
+    <img id="prev" src="../images/left.png.jpg" alt="left">
+    <img id="img" src="../images/rabbit.png" alt="토끼">
+    <button id="next">+</button>
+    <script>
+        const img_src = document.querySelector("#img")
+        const prev = document.querySelector("#prev")
+        const next = document.querySelector("#next")
+        imgs = [
+            "../images/rabbit.png",
+            "../images/blog1.jpg",
+            "../images/blog2.jpg",
+            "../images/blog3.jpg",
+            "../images/mouse.png",
+            "../images/keyboard.png",
+            "../images/labtop.png"
+        ]
+        let k = 0;
+        const prev_img = () =>{
+            k--;
+            if (k<0) k+=7;
+            img_src.src = imgs[k];
+        }
+        prev.addEventListener("click",prev_img)
+
+        const next_img = () =>{
+            k++;
+            if (k>6) k-=7;
+            img_src.src = imgs[k];
+        }
+        next.addEventListener("click",next_img)
+        
+    </script>
+</body>
+</html>

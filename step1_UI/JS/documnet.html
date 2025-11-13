@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>DOM 선택자 실습</title>
+<style>
+    body{background-color: gray;}
+  .highlight { color: red; font-weight: bold; }
+  .class-item { color: blue; }
+</style>
+</head>
+<body>
+<h2>DOM 선택자 실습</h2>
+
+<!-- 테스트용 요소들 -->
+<p id="text1">이건 <b>ID 선택자</b>로 선택할 문장입니다.</p>
+
+<p class="class-item">첫 번째 클래스 요소</p>
+<p class="class-item">두 번째 클래스 요소</p>
+
+<p name="info">name 속성값이 info인 요소 ①</p>
+<p name="info">name 속성값이 info인 요소 ②</p>
+
+<div>
+  <span>span 태그 ①</span>
+  <span>span 태그 ②</span>
+</div>
+
+<p class="query">querySelector 테스트 문장입니다.</p>
+
+<input type="text">
+
+<hr>
+
+<script>
+// 1️⃣ getElementById()
+const elById = document.getElementById("text1");
+elById.style.backgroundColor = "yellow";
+
+// 2️⃣ getElementsByClassName()
+const elByClass = document.getElementsByClassName("class-item");
+for (let e of elByClass) {
+    e.classList.add("highlight");
+}
+
+// 3️⃣ getElementsByTagName()
+const elByTag = document.getElementsByTagName("span");
+for (let e of elByTag) {
+    e.style.border = "1px solid green";
+}
+
+// 4️⃣ getElementsByName()
+const elByName = document.getElementsByName("info");
+for (let e of elByName) {
+    e.style.backgroundColor = "#d0f0ff";
+}
+
+// 5️⃣ querySelectorAll()
+const elByQuery = document.querySelectorAll(".query, span");
+for (let e of elByQuery) {
+    e.style.fontSize = "20px";
+}
+
+const eliii = document.querySelectorAll('input[type=text]');
+
+for (const ii of eliii){
+    if(!ii.hasAttribute('value')){
+    ii.setAttribute('value','hello');
+    }
+}
+
+</script>
+
+</body>
+</html>

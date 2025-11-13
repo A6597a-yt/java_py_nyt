@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{background-color: gray;}
+    .newClass{background-color: pink;}
+    </style>
+</head>
+<body>
+    <!-- 11월 10일 공부 내용 -->
+    <!-- js로 html 제어하기 -->
+    <button id="btn1">배경색 변경</button>
+    <script>
+        // 제어하고자 하는 요소 객체를 가져와야함
+        // 다음과 같은 형태를 많이 사용
+        const btn = document.querySelector("#btn1");
+        const arr = document.querySelectorAll(".class");
+
+        // has : 가지고 있나 검사 true / false
+        // get : 가져오기
+        // set : 설정하기
+
+        // 가져온 요소객체에 스타일을 부여 혹은 클래스를 추가하는 방식을 사용한다
+        btn.classList.add('newClass');
+
+        // 배경색 바꾸는 btn
+        // 누르는 버튼, 바뀔 배경 모두 객체를 가져와야함
+        // 함수를 선언하고
+        // 객체에 함수 부여
+        const body = document.querySelector("body");
+        const bgb = () => body.style.backgroundColor = "black"
+        btn.addEventListener("click",bgb)
+
+    </script>
+</body>
+</html>

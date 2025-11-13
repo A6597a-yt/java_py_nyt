@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}</style>
+</head>
+<body>
+    <!-- 11월 10일 공부 내용 -->
+    <!-- 객체, 메서드, 함수 -->
+    <script>
+        // 객체 ================================================
+        // java의 객체와는 다른 성격이며
+        // py의 dict 과 비슷하게만 생김
+        // 정확히 뭐가 다른지 이해 못함
+
+        const person = {// 객체는 property라는 key/value 쌍으로 이루어짐
+            name: "홍길동",
+            age: 25,
+            job: "개발자"
+        };
+        const circle = {// 객체 안에 객체가 들어갈 수 있다.
+            center : {x : 1.0, y: 2.0},
+            radius : 2.5
+        }
+        const people = [// 객체 배열은 여러 객체를 담은 배열
+            { name: "홍길동", age: 25, job: "개발자" },
+            { name: "김철수", age: 30, job: "디자이너" },
+            { name: "이영희", age: 28, job: "PM" }
+        ];
+        person.bt = 'AB'; // 추가
+        delete person.bt; // 삭제
+        'name' in person // true or false
+
+        // 메서드 : 객체 안에 정의된 함수 ======================
+        const user = {
+            name: '민수',
+            sayHello: function() {
+                console.log('안녕하세요!');
+            }
+        };
+        //축약문법 : function 키워드를 생략해도 된다.
+        const user2 = {
+            name: '민수',
+            sayHello() {
+                console.log(`안녕하세요! 저는 ${this.name}입니다.`);
+            }
+        };
+
+        // 함수 ==============================================
+        function greet(name) {
+            return `안녕, ${name}`; // 문자열을 반환한다
+        }
+        const greet = function(name) {
+            return `안녕, ${name}`;
+        };
+        const greet = (name) => `안녕, ${name}`; // 한 줄이면 return과 중괄호를 생략한다
+        // 반드시 화살표 함수 사용을 익혀야 한다
+        // Math.max 처럼 배열을 받지 않고 ...(스프레드)을 받는다
+
+    </script>
+</body>
+</html>

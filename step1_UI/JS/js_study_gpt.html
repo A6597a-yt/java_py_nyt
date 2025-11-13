@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}</style>
+</head>
+<body>
+
+
+
+    <script>
+        // 1. 순수 함수와 불변성
+        // 나쁨: 원본 배열 변경
+        function pushInPlace(arr, x) { arr.push(x); return arr; }
+
+        // 좋음: 새 배열 반환
+        function append(arr, x) { return [...arr, x]; }
+
+        // 객체 갱신도 복사 후 변경
+        const user = { id:1, name:"kim" };
+        const user2 = { ...user, name:"lee" };
+
+        // 2. 고계 함수 
+        const twice = f => x => f(f(x));
+        const inc = x => x + 1;
+        twice(inc)(3); // 5
+
+        // 3. 합성(파이프/컴포즈)
+        const pipe = (...fns) => x => fns.reduce((v,f)=>f(v), x);
+        const compose = (...fns) => x => fns.reduceRight((v,f)=>f(v), x);
+
+        pipe(inc, double)(3);    // 8
+        compose(inc, double)(3); // 7
+
+        const trim = s => s.trim();
+        const toInt = s => parseInt(s, 10);
+        const clamp01 = n => Math.max(0, Math.min(1, n));
+
+        pipe(trim, toInt, clamp01)(" 2 "); // 1..0 범위에 맞춰 1 또는 0
+
+        // 4. 커링
+        const curry = f => (...a) => a.length >= f.length
+        ? f(...a)
+        : (...b) => curry(f)(...a, ...b);
+
+        const add = (a,b,c) => a+b+c;
+        const addC = curry(add);
+        addC(1)(2)(3); // 6
+
+        // 5. 선언형 배열 정리
+        const items = [
+        {id:1, price:5000, tag:"A"},
+        {id:2, price:2000, tag:"B"},
+        {id:3, price:8000, tag:"A"},
+        ];
+
+        // A태그만 뽑고 가격 10% 인상 후 총합
+        const total = items
+        .filter(it => it.tag === "A")
+        .map(it => ({ ...it, price: Math.round(it.price * 1.1) }))
+        .reduce((sum, it) => sum + it.price, 0);
+
+        const sum = arr.reduce((acc, cur) => acc+cur , 0)
+
+
+    </script>
+</body>
+</html>

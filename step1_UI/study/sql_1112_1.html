@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // sql 문법
+
+        // CREATE =============================================
+        // -- 테이블 생성
+        CREATE TABLE 테이블명 (
+        컬럼명 데이터형 제약조건,
+        ...
+        );
+
+        // -- 예시
+        CREATE TABLE member (
+        id INT PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        age INT
+        );
+
+        // -- 데이터베이스 생성
+        CREATE DATABASE db_name;
+
+        // -- 뷰(View) 생성
+        CREATE VIEW view_name AS SELECT ...;
+
+        // ALTER =============================================
+        // -- 컬럼 추가
+        ALTER TABLE 테이블명 ADD COLUMN 컬럼명 데이터형;
+
+        // -- 컬럼 삭제
+        ALTER TABLE 테이블명 DROP COLUMN 컬럼명;
+
+        // -- 컬럼 이름 변경
+        ALTER TABLE 테이블명 RENAME COLUMN 기존컬럼명 TO 새컬럼명;
+
+        // -- 컬럼 데이터형 변경
+        ALTER TABLE 테이블명 MODIFY COLUMN 컬럼명 새데이터형;
+
+        // -- 기본키 추가
+        ALTER TABLE 테이블명 ADD PRIMARY KEY (컬럼명);
+
+        // -- 제약조건 삭제
+        ALTER TABLE 테이블명 DROP PRIMARY KEY;
+
+        // -- 테이블 이름 변경
+        ALTER TABLE 테이블명 RENAME TO 새테이블명;
+
+        // DROP =============================================
+        // -- 테이블 삭제
+        DROP TABLE 테이블명;
+
+        // -- 데이터베이스 삭제
+        DROP DATABASE 데이터베이스명;
+
+        // -- 뷰 삭제
+        DROP VIEW 뷰명;
+
+    </script>
+</body>
+</html>

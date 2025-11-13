@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{background-color: gray;}</style>
+</head>
+<body>
+    <script>
+        const arr = [];
+        const even = [];
+        for (let i=1;i<=10;i++){
+            if (i%2===0)even.push(i*2);
+        }
+        document.write('['+even+']');
+
+        document.write('<br>'); // <br>로 줄바꿈
+
+        const arr2 = [100, 98, 58, 71, 26, 50, 39, 45];
+        let sum = 0
+        arr2.forEach (x =>{sum += x})
+        document.write(sum/arr2.length);
+
+        document.write('<br>'); // <br>로 줄바꿈
+
+        const arr3 = [1, 2, 2, 3, 4, 4, 5, 5, 5]
+        const visited = new Array(30).fill(false);
+        const arr4 = []
+        for (let k=0;k<arr3.length;k++){
+            if (!visited[arr3[k]]){
+                visited[arr3[k]]=true;
+                arr4.push(arr3[k]);
+            }
+        }
+        document.write(arr4);
+
+
+
+
+    </script>
+    
+</body>
+</html>
